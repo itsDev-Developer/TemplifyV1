@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: poster-bot
+    runtime: docker
+    plan: free            # or starter for always-on + a persistent disk
+    healthCheckPath: /health
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: TMDB_API_KEY
+        sync: false
+      - key: FANART_API_KEY
+        sync: false
+      - key: LOG_CHANNEL_ID
+        sync: false
+      - key: STORAGE_CHANNEL_ID
+        sync: false
+      - key: OWNER_ID
+        sync: false
+      - key: SUDO_IDS
+        sync: false
+      - key: LOG_FORMAT
+        value: json
+      - key: RENDER_SCALE
+        value: "1.5"
+      - key: RENDER_CONCURRENCY
+        value: "1"
+      # PORT and RENDER_EXTERNAL_URL are provided by Render; the bot switches to webhook mode on its own.
